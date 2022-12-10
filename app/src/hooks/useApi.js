@@ -12,7 +12,7 @@ const useApi = () => {
 
 	const login = async (data) => {
 		const res = await api.post('/login', data);
-		dispatch(userLogin({}, res.data.token))
+		dispatch(userLogin({ user: {}, token: res.data.token }))
 		localStorage.setItem('token', res.data.token);
 		return res.data;
 	}
