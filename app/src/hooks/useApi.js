@@ -1,10 +1,12 @@
 import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addItem, removeItem, setUser, userLogin, userLogout } from "../store/authReducer";
 
 const useApi = () => {
 	const { token } = useSelector(state => state.auth);
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const api = axios.create({
 		baseURL: 'https://capital-server.onrender.com'
@@ -65,6 +67,7 @@ const useApi = () => {
 	const logout = async () => {
 		dispatch(userLogout());
 		localStorage.removeItem('token');
+		navigate('/');
 	}
 
 	return { login, register, getItems, addItems, getUser, logout, purchaseItem }

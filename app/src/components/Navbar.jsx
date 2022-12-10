@@ -1,12 +1,13 @@
 import { Avatar, Box, Button, CloseButton, Drawer, DrawerContent, DrawerOverlay, Flex, Link, Menu, MenuButton, MenuItem, MenuList, Stack, Text, useDisclosure } from '@chakra-ui/react'
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import useApi from '../hooks/useApi';
 import { setShow } from '../store/authReducer';
 
 const Navbar = () => {
 	const dispatch = useDispatch();
 	const { isOpen, onOpen, onClose } = useDisclosure();
-
+	const { logout } = useApi();
 	const handleClick = () => {
 		dispatch(setShow(true));
 	}
@@ -54,7 +55,7 @@ const Navbar = () => {
 							<Avatar name='hehe' size={'sm'} src='https://bit.ly/dan-abramov' />
 						</MenuButton>
 						<MenuList>
-							<MenuItem>Logout</MenuItem>
+							<MenuItem onClick={logout}>Logout</MenuItem>
 						</MenuList>
 					</Menu>
 				</Flex>
