@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Box, Grid, GridItem, SimpleGrid } from '@chakra-ui/react';
+import { Box, GridItem, SimpleGrid } from '@chakra-ui/react';
 import HomeWrapper from '../components/HomeWrapper';
 import useApi from '../hooks/useApi';
 import { setItems } from '../store/authReducer';
@@ -16,6 +16,7 @@ const Home = () => {
 			console.log(res)
 			dispatch(setItems(res));
 		})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

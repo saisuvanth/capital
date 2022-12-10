@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem, setUser, userLogin, userLogout } from "../store/authReducer";
 
 const useApi = () => {
-	const { user, token } = useSelector(state => state.auth);
+	const { token } = useSelector(state => state.auth);
 	const dispatch = useDispatch();
 
 	const api = axios.create({
@@ -38,6 +38,7 @@ const useApi = () => {
 	}
 
 	const addItems = async (item) => {
+		// eslint-disable-next-line no-unused-vars
 		const res = await api.post('/add-item', item, {
 			headers: {
 				Authorization: `Bearer ${token}`

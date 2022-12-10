@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import PrivateRoute from './components/PrivateRoute';
@@ -12,12 +12,12 @@ import Register from './pages/Register';
 import { setToken } from './store/authReducer';
 
 function App() {
-  const { user } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (localStorage.getItem('token'))
       dispatch(setToken(localStorage.getItem('token')));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
