@@ -7,7 +7,7 @@ const useApi = () => {
 	const dispatch = useDispatch();
 
 	const api = axios.create({
-		baseURL: 'http://localhost:8080'
+		baseURL: 'https://capital-server.onrender.com'
 	});
 
 	const login = async (data) => {
