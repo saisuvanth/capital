@@ -31,7 +31,7 @@ const PrivateRoute = () => {
 					<Spinner />
 				</Box>
 			</HomeWrapper>)
-	} else {
+	} if (!token) {
 		return <Navigate to={'/login'} />
 	}
 

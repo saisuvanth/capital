@@ -1,12 +1,21 @@
 import { Box, FormControl, FormLabel, Text, Input, Checkbox, Button, Stack } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import useApi from '../hooks/useApi';
 
 const Login = () => {
 	const [check, setCheck] = useState(false);
+	const { token } = useSelector(state => state.auth);
 	const navigate = useNavigate();
 	const { login } = useApi();
+
+	useEffect(() => {
+		if (token) {
+			navigate('/');
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
