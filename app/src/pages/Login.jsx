@@ -16,7 +16,9 @@ const Login = () => {
 			data[pair[0]] = pair[1];
 
 		login(data).then(res => {
-			navigate('/');
+			setTimeout(() => {
+				navigate('/');
+			}, 2000);
 		}).catch(err => {
 			alert(err);
 		})
